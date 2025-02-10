@@ -6,7 +6,7 @@
 /*   By: juhtoo-h <juhtoo-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 13:13:29 by juhtoo-h          #+#    #+#             */
-/*   Updated: 2025/01/28 15:56:10 by juhtoo-h         ###   ########.fr       */
+/*   Updated: 2025/02/10 14:18:25 by juhtoo-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,10 @@ void	ft_free_stack(t_list **list)
 	free(list);
 }
 
-void	ft_error_message(t_list **list)
+void	ft_error_message(t_list **stack_a, t_list **stack_b)
 {
 	ft_putstr_fd("Error\n", 2);
-	ft_free_stack(list);
+	ft_free_stack(stack_a);
+	ft_free_stack(stack_b);
 	exit(EXIT_FAILURE);
 }

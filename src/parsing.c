@@ -6,7 +6,7 @@
 /*   By: juhtoo-h <juhtoo-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 12:54:24 by juhtoo-h          #+#    #+#             */
-/*   Updated: 2025/02/10 12:24:15 by juhtoo-h         ###   ########.fr       */
+/*   Updated: 2025/02/10 14:43:45 by juhtoo-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,21 +63,21 @@ int	is_duplicate(t_list **list, int numb)
 	return (1);
 }
 
-static int	is_integer(t_list **list, char *split)
+static int	is_integer(t_list **stack_a, t_list **stack_b, char *split)
 {
 	long	num;
 
 	if (ft_isnumber(split) == 0)
-		ft_error_message(list);
+		ft_error_message(stack_a, stack_b);
 	num = ft_atoi(split);
 	if (num > 2147483647 || num < -2147483648)
-		ft_error_message(list);
-	if (is_duplicate(list, (int)num) == 0)
-		ft_error_message(list);
+		ft_error_message(stack_a, stack_b);
+	if (is_duplicate(stack_a, (int)num) == 0)
+		ft_error_message(stack_a, stack_b);
 	return ((int)num);
 }
 
-int	ft_parsing(t_list **list, int argc, char **argv)
+int	ft_parsing(t_list **stack_a, t_list **stack_b, int argc, char **argv)
 {
 	int		i;
 	int		j;
@@ -96,11 +96,11 @@ int	ft_parsing(t_list **list, int argc, char **argv)
 		}
 		while (splits[j])
 		{
-			num = is_integer(list, splits[j++]);
-			ft_lstadd_back(list, ft_lstnew((int)num));
+			num = is_integer(stack_a, stack_b, splits[j++]);
+			ft_lstadd_back(stack_a, ft_lstnew((int)num));
 		}
 		ft_free_splits(splits);
 	}
-	index_init(list);
+	index_init(stack_a);
 	return (1);
 }

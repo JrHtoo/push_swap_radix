@@ -6,7 +6,7 @@
 /*   By: juhtoo-h <juhtoo-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:27:05 by juhtoo-h          #+#    #+#             */
-/*   Updated: 2025/02/10 12:01:33 by juhtoo-h         ###   ########.fr       */
+/*   Updated: 2025/02/10 14:18:29 by juhtoo-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ typedef struct s_data
 	bool	first_time;
 }	t_data;
 
-int		ft_parsing(t_list **list, int argc, char **argv);
+int		ft_parsing(t_list **stack_a, t_list **stack_b, int argc, char **argv);
 void	ft_free_stack(t_list **list);
 void	ft_free_splits(char **split);
-void	ft_error_message(t_list **list);
+void	ft_error_message(t_list **stack_a, t_list **stack_b);
 int		check_sorted(t_list **stack, int size);
 int		is_duplicate(t_list **list, int numb);
 int		ft_isnumber(char *numb);
