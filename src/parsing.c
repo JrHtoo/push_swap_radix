@@ -6,7 +6,7 @@
 /*   By: juhtoo-h <juhtoo-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 12:54:24 by juhtoo-h          #+#    #+#             */
-/*   Updated: 2025/02/05 15:27:17 by juhtoo-h         ###   ########.fr       */
+/*   Updated: 2025/02/10 12:24:15 by juhtoo-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,25 @@ int	is_duplicate(t_list **list, int numb)
 	return (1);
 }
 
+static int	is_integer(t_list **list, char *split)
+{
+	long	num;
+
+	if (ft_isnumber(split) == 0)
+		ft_error_message(list);
+	num = ft_atoi(split);
+	if (num > 2147483647 || num < -2147483648)
+		ft_error_message(list);
+	if (is_duplicate(list, (int)num) == 0)
+		ft_error_message(list);
+	return ((int)num);
+}
+
 int	ft_parsing(t_list **list, int argc, char **argv)
 {
 	int		i;
 	int		j;
-	long	num;
+	int		num;
 	char	**splits;
 
 	i = 1;
@@ -82,13 +96,7 @@ int	ft_parsing(t_list **list, int argc, char **argv)
 		}
 		while (splits[j])
 		{
-			if (ft_isnumber(splits[j]) == 0)
-				ft_error_message(list);
-			num = ft_atoi(splits[j++]);
-			if (num > 2147483647 || num < -2147483648)
-				ft_error_message(list);
-			if (is_duplicate(list, (int)num) == 0)
-				ft_error_message(list);
+			num = is_integer(list, splits[j++]);
 			ft_lstadd_back(list, ft_lstnew((int)num));
 		}
 		ft_free_splits(splits);
