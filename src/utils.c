@@ -6,7 +6,7 @@
 /*   By: juhtoo-h <juhtoo-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:50:53 by juhtoo-h          #+#    #+#             */
-/*   Updated: 2025/02/05 12:39:39 by juhtoo-h         ###   ########.fr       */
+/*   Updated: 2025/02/10 12:28:29 by juhtoo-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,4 +99,3 @@ void	index_init(t_list **stack)
 		head = get_next_min(stack);
 	}
 }
-
